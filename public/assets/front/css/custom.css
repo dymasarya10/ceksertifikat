@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans+Caption:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+body{
+    font-family: 'Quicksand', sans-serif;
+}
+.pt-sans{
+    font-family: 'PT Sans Caption', sans-serif;
+}
+
+.fs-7 {
+    font-size: 0.95rem !important;
+}
+.active{
+    font-weight: 600;
+}
+.min-height-1-rem{
+    min-height: 3rem;
+}
+.min-height-2-rem{
+    min-height: 5rem;
+}
+.min-height-3-rem{
+    min-height: 7rem;
+}
+.min-height-4-rem{
+    min-height: 9rem;
+}
+.min-height-5-rem{
+    min-height: 11rem;
+}
+.min-height-1-em{
+    min-height: 3em;
+}
+.min-height-2-em{
+    min-height: 5em;
+}
+.min-height-3-em{
+    min-height: 7em;
+}
+.min-height-4-em{
+    min-height: 9em;
+}
+.min-height-5-em{
+    min-height: 11em;
+}
+.min-height-25-vh{
+    min-height: 25vh;
+}
+.min-height-50-vh{
+    min-height: 50vh;
+}
+.min-height-75-vh{
+    min-height: 75vh;
+}
+.min-height-100-vh{
+    min-height: 100vh;
+}
+.px-6 {
+    padding-right: 3.75rem !important;
+    padding-left: 3.75rem !important;
+}
+.border-bold{
+    border: 4px solid;
+}
+
+@media (max-width: 475px) {
+    .min-height-phone-1-em{
+        min-height: 1em;
+    } 
+    .min-height-phone-1-rem{
+        min-height: 1rem;
+    }
+    .min-height-phone-2-em{
+        min-height: 2em;
+    } 
+    .min-height-phone-2-rem{
+        min-height: 2rem;
+    }
+    .min-height-phone-3-em{
+        min-height: 3em;
+    } 
+    .min-height-phone-3-rem{
+        min-height: 3rem;
+    }
+    .min-height-phone-4-em{
+        min-height: 4em;
+    } 
+    .min-height-phone-4-rem{
+        min-height: 4rem;
+    }
+    .min-height-phone-5-em{
+        min-height: 5em;
+    } 
+    .min-height-phone-5-rem{
+        min-height: 5rem;
+    }
+}
