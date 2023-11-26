@@ -44,7 +44,13 @@
                                                 <td>{{ $item->student->name ?? 'NONE' }}</td>
                                                 <td>{{ $item->event->name ?? 'NONE' }}</td>
                                                 <td>{{ $item->event->date ?? 'NONE' }}</td>
-                                                <td><a href="{{ route('download', ['filename' => 'SAMPLE.pdf']) }}" class="btn btn-primary"><i class="fa-solid fa-file-export"></i></a></td>
+                                                <td>
+                                                    <form action="{{ route('download') }}" method="POST">
+                                                        @csrf
+                                                        <input type="hidden" value="{{ $item->path }}" name="path">
+                                                        <button type="submit" class="btn btn-primary btn-sm"><i class="fa-solid fa-file-export"></i></button>
+                                                    </form>
+                                                </td>
                                             </tr>
                                         @endforeach
                                     </tbody>

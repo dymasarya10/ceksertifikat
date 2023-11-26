@@ -13,7 +13,7 @@ class StudentController extends Controller
     {
         return view('admin.pages.students.students', [
             'header' => 'Data Siswa',
-            'collection' => Student::latest()->filter(request(['s']))->orderBy('name')->paginate(10)->withQueryString()
+            'collection' => Student::filter(request(['s']))->orderBy('name')->paginate(10)->withQueryString()
         ]);
     }
 
@@ -55,14 +55,17 @@ class StudentController extends Controller
 
     public function update(Request $request, $id)
     {
+        $cek = Student::find($id);
+        ($request->id === $cek->id) ? $validation = '|unique:events,id' : $validation = '';
+
         $validateData = $request->validate([
-            'id' => 'required|numeric|unique:students,id',
+            'id' => 'required|numeric' . $validation,
             'name' => 'required|regex:/^[A-Za-z\s]+$/'
         ]);
 
         Student::findOrFail($id)->update($validateData);
 
-        return redirect(route('student'))->with('success','Data Berhasil Diubah');
+        return redirect(route('student'))->with('success', 'Data Berhasil Diubah');
     }
 
     public function importexcel(Request $request)

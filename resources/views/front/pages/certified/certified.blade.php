@@ -4,11 +4,13 @@
     <div class="container-fluid min-height-3-rem">
         @if ($auth === 'certified')
             <div class="container text-center p-0">
-                <img src="{{ asset('assets/front/img/certified.svg') }}" alt=""
-                    class="img-fluid" width="15%" style="position: absolute">
-                    {{-- position-absolute top-0 start-0 translate-middle => pinggir atas --}}
-                    {{-- position-absolute top-50 start-50 translate-middle => Tengah --}}
-                <img src="{{ asset('storage/charterpng/SAMPLE.png') }}" alt="" class="img-fluid">
+                <img src="{{ asset('assets/front/img/certified.svg') }}" alt="" class="img-fluid" width="15%"
+                    style="position: absolute">
+                {{-- position-absolute top-0 start-0 translate-middle => pinggir atas --}}
+                {{-- position-absolute top-50 start-50 translate-middle => Tengah --}}
+                @foreach ($charter as $item)
+                    <img src="{{ asset('storage/' . $item->path) }}" alt="" class="img-fluid">
+                @endforeach
             </div>
         @else
             <p class="display-5 text-center">Piagam Tidak Ditemukan</p>

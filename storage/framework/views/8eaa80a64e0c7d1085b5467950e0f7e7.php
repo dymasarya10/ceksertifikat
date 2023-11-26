@@ -43,7 +43,13 @@
                                                 <td><?php echo e($item->student->name ?? 'NONE'); ?></td>
                                                 <td><?php echo e($item->event->name ?? 'NONE'); ?></td>
                                                 <td><?php echo e($item->event->date ?? 'NONE'); ?></td>
-                                                <td><a href="<?php echo e(route('download', ['filename' => 'SAMPLE.pdf'])); ?>" class="btn btn-primary"><i class="fa-solid fa-file-export"></i></a></td>
+                                                <td>
+                                                    <form action="<?php echo e(route('download')); ?>" method="POST">
+                                                        <?php echo csrf_field(); ?>
+                                                        <input type="hidden" value="<?php echo e($item->path); ?>" name="path">
+                                                        <button type="submit" class="btn btn-primary btn-sm"><i class="fa-solid fa-file-export"></i></button>
+                                                    </form>
+                                                </td>
                                             </tr>
                                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     </tbody>

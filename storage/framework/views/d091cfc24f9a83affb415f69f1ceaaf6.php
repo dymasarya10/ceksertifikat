@@ -7,8 +7,15 @@
             <button class="btn btn-primary" id="btnNavbarSearch" type="submit"><i class="fas fa-search"></i></button>
         </div>
     </form>
+    <?php if(session()->has('success')): ?>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <?php echo e(session('success')); ?>
+
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    <?php endif; ?>
     <div class="overflow-x-auto">
-        <a href="" class="btn btn-primary mb-3"><i class="fa-solid fa-plus"></i> Tambah</a>
+        <a href="<?php echo e(route('createevt')); ?>" class="btn btn-primary mb-3"><i class="fa-solid fa-plus"></i> Tambah</a>
         <?php if($collection->count()): ?>
         <table class="table table-hover table-bordered table-sm table-responsive">
             <thead class="bg-primary text-white">
@@ -33,18 +40,13 @@
                             <td><?php echo e($item->event_comissioner); ?></td>
                             <td><?php echo e(date('l', strtotime($item->date)) . ', ' . date('d M Y', strtotime($item->date))); ?></td>
                             <td class="d-flex">
-                                <form action="/event/edit" method="POST" class="px-1">
+                                <a href="/adm/event/edit/<?php echo e($item->id); ?>" class="btn btn-warning btn-sm"><i
+                                    class="fa-solid fa-pencil"></i></a>
+                                <form action="<?php echo e(route('destroyevt')); ?>" method="POST" class="px-1">
                                     <?php echo method_field('delete'); ?>
                                     <?php echo csrf_field(); ?>
                                     <input type="hidden" value="<?php echo e($item->id); ?>" name="target">
-                                    <button type="submit" class="btn btn-warning"><i
-                                            class="fa-solid fa-pencil"></i></button>
-                                </form>
-                                <form action="<?php echo e(route('destroyevn')); ?>" method="POST" class="px-1">
-                                    <?php echo method_field('delete'); ?>
-                                    <?php echo csrf_field(); ?>
-                                    <input type="hidden" value="<?php echo e($item->id); ?>" name="target">
-                                    <button type="submit" class="btn btn-danger"
+                                    <button type="submit" class="btn btn-danger btn-sm"
                                         onclick="return confirm('Apakah anda yakin ?')"><i
                                             class="fa-solid fa-trash"></i></button>
                                 </form>

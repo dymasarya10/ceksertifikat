@@ -11,7 +11,7 @@
                     <div class="sb-nav-link-icon"><i class="fa-solid fa-user-graduate"></i></div>
                     Data Siswa
                 </a>
-                <a class="nav-link <?php echo e(($header==='Data Sertifikat' ? 'active' : '')); ?>" href="index.html">
+                <a class="nav-link <?php echo e(($header==='Data Sertifikat' ? 'active' : '')); ?>" href="<?php echo e(route('certificate')); ?>">
                     <div class="sb-nav-link-icon"><i class="fa-solid fa-certificate"></i></div>
                     Data Sertifikat
                 </a>
@@ -26,8 +26,8 @@
                 <div class="sb-sidenav-menu-heading">Operation</div>
                 <a class="nav-link collapsed <?php echo e((($header==='Tambah Data Piagam'||$header==='Tambah Data Sertifikat') ? 'active' : '')); ?>" href="#" data-bs-toggle="collapse"
                     data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
-                    <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                    Tambah Data
+                    <div class="sb-nav-link-icon"><i class="fa-solid fa-qrcode"></i></div>
+                    Scan QR
                     <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                 </a>
                 <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne"
@@ -35,7 +35,6 @@
                     <nav class="sb-sidenav-menu-nested nav">
                         <a class="nav-link" href="layout-static.html">Sertifikat</a>
                         <a class="nav-link" href="layout-sidenav-light.html">Piagam</a>
-                        <a class="nav-link" href="layout-sidenav-light.html">Event</a>
                     </nav>
                 </div>
             </div>

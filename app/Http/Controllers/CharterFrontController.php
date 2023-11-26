@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Charter;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Storage;
 
 class CharterFrontController extends Controller
@@ -25,29 +26,26 @@ class CharterFrontController extends Controller
 
     public function checkscan(Request $request)
     {
-        $auth = '';
-        if (Charter::where('serial_number', $request->code)->count()) {
-            $auth = 'certified';
+        try {
+            $decrypted = Crypt::decrypt($request->code);
+            $charter = Charter::where('serial_number', $decrypted);
+            $auth = '';
+            if ($charter->count()) {
+                $auth = 'certified';
+            }
+            return view('front.pages.certified.certified', [
+                'auth' => $auth,
+                'heading' => 'Cari Data Piagam',
+                'charter' => $charter->get('path'),
+            ]);
+        } catch (\Illuminate\Contracts\Encryption\DecryptException $e) {
+            return ('code salah');
         }
-        return view('front.pages.certified.certified', [
-            'auth' => $auth,
-            'heading' => 'Cari Data Piagam'
-        ]);
     }
 
-    public function downloadfile($filename)
+    public function downloadfile(Request $request)
     {
-        // Path ke file di direktori penyimpanan
-        $filePath = storage_path('app/' . $filename);
-
-        // Periksa apakah file ada
-        if (Storage::exists($filename)) {
-            // Buat respons untuk file
-            return response()->download($filePath, $filename);
-
-        } else {
-            // File tidak ditemukan
-            return dd(false);
-        }
+        // return dd($request);
+        return response()->download(storage_path('app/public/'.$request->path));
     }
 }

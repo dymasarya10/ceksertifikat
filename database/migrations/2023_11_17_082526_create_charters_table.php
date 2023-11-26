@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('student_id');
             $table->foreignId('event_id');
             $table->string('serial_number')->unique();
-            $table->string('path')->unique();
+            $table->string('path');
             $table->timestamps();
         });
     }

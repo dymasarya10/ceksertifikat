@@ -9,8 +9,14 @@
             <button class="btn btn-primary" id="btnNavbarSearch" type="submit"><i class="fas fa-search"></i></button>
         </div>
     </form>
+    @if (session()->has('success'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ session('success') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
     <div class="overflow-x-auto">
-        <a href="" class="btn btn-primary mb-3"><i class="fa-solid fa-plus"></i> Tambah</a>
+        <a href="{{ route('createevt') }}" class="btn btn-primary mb-3"><i class="fa-solid fa-plus"></i> Tambah</a>
         @if ($collection->count())
         <table class="table table-hover table-bordered table-sm table-responsive">
             <thead class="bg-primary text-white">
@@ -35,18 +41,13 @@
                             <td>{{ $item->event_comissioner }}</td>
                             <td>{{ date('l', strtotime($item->date)) . ', ' . date('d M Y', strtotime($item->date)) }}</td>
                             <td class="d-flex">
-                                <form action="/event/edit" method="POST" class="px-1">
+                                <a href="/adm/event/edit/{{ $item->id }}" class="btn btn-warning btn-sm"><i
+                                    class="fa-solid fa-pencil"></i></a>
+                                <form action="{{ route('destroyevt') }}" method="POST" class="px-1">
                                     @method('delete')
                                     @csrf
                                     <input type="hidden" value="{{ $item->id }}" name="target">
-                                    <button type="submit" class="btn btn-warning"><i
-                                            class="fa-solid fa-pencil"></i></button>
-                                </form>
-                                <form action="{{ route('destroyevn') }}" method="POST" class="px-1">
-                                    @method('delete')
-                                    @csrf
-                                    <input type="hidden" value="{{ $item->id }}" name="target">
-                                    <button type="submit" class="btn btn-danger"
+                                    <button type="submit" class="btn btn-danger btn-sm"
                                         onclick="return confirm('Apakah anda yakin ?')"><i
                                             class="fa-solid fa-trash"></i></button>
                                 </form>

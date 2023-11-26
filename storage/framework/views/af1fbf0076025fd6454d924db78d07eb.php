@@ -1,6 +1,6 @@
 <?php $__env->startSection('adminsection'); ?>
-    <p class="fs-6">Berikut adalah data piagam anak Sekolah Labitech Jakarta</p>
-    <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 mb-4" method="GET" action="/adm/charter">
+    <p class="fs-6">Berikut adalah data sertifikat anak Sekolah Labitech Jakarta</p>
+    <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 mb-4" method="GET" action="/adm/certificate">
         <div class="input-group">
             <input class="form-control" type="text" placeholder="Cari NISN..." aria-label="Search for..."
                 aria-describedby="btnNavbarSearch" name="s" value="<?php echo e(request('s')); ?>" />
@@ -15,7 +15,7 @@
         </div>
     <?php endif; ?>
     <div class="overflow-x-auto">
-        <a href="<?php echo e(route('createdch')); ?>" class="btn btn-primary mb-3"><i class="fa-solid fa-plus"></i> Tambah</a>
+        <a href="<?php echo e(route('createcrt')); ?>" class="btn btn-primary mb-3"><i class="fa-solid fa-plus"></i> Tambah</a>
         <?php if($collection->count()): ?>
         <a href="<?php echo e(route('exportcrt')); ?>" class="btn btn-success mb-3"><i class="fa-solid fa-file-export"></i> Ambil Data QR</a>
         <?php endif; ?>
@@ -29,7 +29,6 @@
                             <th scope="col">Nama</th>
                             <th scope="col">Acara</th>
                             <th scope="col">Kode Piagam</th>
-                            
                             <th scope="col">Penanggung Jawab</th>
                             <th scope="col">Ketua Pelaksana</th>
                             <th scope="col">Tanggal Pelaksanaan</th>
@@ -55,7 +54,7 @@
 
                                 </td>
                                 <td>
-                                    <form action="<?php echo e(route('download')); ?>" method="POST">
+                                    <form action="<?php echo e(route('downloadcrt')); ?>" method="POST">
                                         <?php echo csrf_field(); ?>
                                         <input type="hidden" value="<?php echo e($item->path); ?>" name="path">
                                         <button type="submit" class="btn btn-primary btn-sm"><i
@@ -64,7 +63,7 @@
                                 </td>
                                 <td class="d-flex">
                                     
-                                    <form action="<?php echo e(route('destroydch')); ?>" method="POST" class="px-1">
+                                    <form action="<?php echo e(route('destroycrt')); ?>" method="POST" class="px-1">
                                         <?php echo method_field('delete'); ?>
                                         <?php echo csrf_field(); ?>
                                         <input type="hidden" value="<?php echo e($item->serial_number); ?>" name="target">
@@ -88,4 +87,4 @@
         </div>
     <?php $__env->stopSection(); ?>
 
-<?php echo $__env->make('admin.templates.layout', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\laragon\www\ceksertifikat\resources\views/admin/pages/charters/charters.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('admin.templates.layout', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\laragon\www\ceksertifikat\resources\views/admin/pages/certificate/certificates.blade.php ENDPATH**/ ?>

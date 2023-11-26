@@ -32,7 +32,8 @@
                         <div class="modal-body">
                             <div class="input-group">
                                 <input type="file" class="form-control" id="inputGroupFile04"
-                                    aria-describedby="inputGroupFileAddon04" aria-label="Upload" name="file" required>
+                                    aria-describedby="inputGroupFileAddon04" aria-label="Upload" name="file" required
+                                    accept=".xlsx">
                                 <button class="btn btn-outline-secondary" type="submit" id="inputGroupFileAddon04"><i
                                         class="fa-solid fa-upload"></i></button>
                             </div>
@@ -63,12 +64,13 @@
                             <td>{{ $item->id }}</td>
                             <td>{{ $item->name }}</td>
                             <td class="d-flex">
-                                <a href="/student/edit/{{ $item->id }}" class="btn btn-warning"><i class="fa-solid fa-pencil"></i></a>
+                                <a href="/adm/student/edit/{{ $item->id }}" class="btn btn-warning btn-sm"><i
+                                        class="fa-solid fa-pencil"></i></a>
                                 <form action="{{ route('destroystd') }}" method="POST" class="px-1">
                                     @method('delete')
                                     @csrf
                                     <input type="hidden" value="{{ $item->id }}" name="target">
-                                    <button type="submit" class="btn btn-danger"
+                                    <button type="submit" class="btn btn-danger btn-sm"
                                         onclick="return confirm('Apakah anda yakin ?')"><i
                                             class="fa-solid fa-trash"></i></button>
                                 </form>
