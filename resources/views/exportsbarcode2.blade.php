@@ -9,28 +9,31 @@
 </head>
 
 <body>
-        <table>
-            <thead>
+    <table>
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Nama</th>
+                <th>NISN</th>
+                <th>Nama Acara</th>
+                <th>Kode Sertifikat</th>
+                <th>Kode Barcode</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($collection as $item)
                 <tr>
-                    <th>No</th>
-                    <th>Nama</th>
-                    <th>NISN</th>
-                    <th>Kode Sertifikat</th>
-                    <th>Kode Barcode</th>
+                    <td>{{ $loop->iteration }}</td>
+                    <td>{{ $item->student->name }}</td>
+                    <td>{{ $item->student->id }}</td>
+                    <td>{{ $item->event->name }}</td>
+                    <td>{{ $item->serial_number }}</td>
+                    <td>{{ base64_encode($item->serial_number) . ':' . rand() . rand() . $item->student->id . rand() }}
+                    </td>
                 </tr>
-            </thead>
-            <tbody>
-                @foreach ($collection as $item)
-                <tr>
-                        <td>{{ $loop->iteration }}</td>
-                        <td>{{ $item->student->name }}</td>
-                        <td>{{ $item->student->id }}</td>
-                        <td>{{ $item->serial_number }}</td>
-                        <td>{{ Crypt::encrypt($item->serial_number) }}</td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
+            @endforeach
+        </tbody>
+    </table>
 </body>
 
 </html>

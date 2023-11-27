@@ -11,7 +11,7 @@
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </div>
         <?php else: ?>
-            <p class="display-5 text-center">Piagam Tidak Ditemukan</p>
+            <p class="display-5 text-center"><?php echo e($message); ?></p>
         <?php endif; ?>
     </div>
 

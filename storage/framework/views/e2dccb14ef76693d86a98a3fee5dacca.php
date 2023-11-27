@@ -19,7 +19,12 @@
                 <li>
                     <hr class="dropdown-divider" />
                 </li>
-                <li><a class="dropdown-item" href="#!">Logout</a></li>
+                <li>
+                    <form action="<?php echo e(route('logout')); ?>" method="POST">
+                        <?php echo csrf_field(); ?>
+                        <button class="dropdown-item">Logout</button>
+                    </form>
+                </li>
             </ul>
         </li>
     </ul>

@@ -11,12 +11,12 @@
          </button>
          <div class="collapse navbar-collapse px-md-4 px-2" id="navbarNavAltMarkup">
              <div class="navbar-nav">
-                 <a class="nav-link {{ ($heading === '' ? 'border-success border-bottom active ' : '' ) }} me-lg-5 min-height-3-em min-height-phone-3-em d-lg-flex justify-content-center align-items-center mb-md-0 mb-2"
+                 <a class="nav-link {{ $heading === '' ? 'border-success border-bottom active ' : '' }} me-lg-5 min-height-3-em min-height-phone-3-em d-lg-flex justify-content-center align-items-center mb-md-0 mb-2"
                      aria-current="page" href="{{ route('home') }}">Beranda</a>
-                 <a class="nav-link {{ ($heading === 'Cari Data Piagam' ? 'border-success border-bottom active ' : '' ) }} me-lg-5 min-height-3-em min-height-phone-3-em d-lg-flex justify-content-center align-items-center mb-md-0 mb-2"
+                 <a class="nav-link {{ $heading === 'Cari Data Piagam' ? 'border-success border-bottom active ' : '' }} me-lg-5 min-height-3-em min-height-phone-3-em d-lg-flex justify-content-center align-items-center mb-md-0 mb-2"
                      href="{{ route('frontcharter') }}">Cek Piagam</a>
-                 <a class="nav-link {{ ($heading === 'Cari Data Sertifikat' ? 'border-success border-bottom active ' : '' ) }} me-lg-5 min-height-3-em min-height-phone-3-em d-lg-flex justify-content-center align-items-center mb-md-0 mb-2"
-                     href="pages.html">Cek Sertifikat</a>
+                 <a class="nav-link {{ $heading === 'Cari Data Sertifikat' ? 'border-success border-bottom active ' : '' }} me-lg-5 min-height-3-em min-height-phone-3-em d-lg-flex justify-content-center align-items-center mb-md-0 mb-2"
+                     href="{{ route('frontcertificate') }}">Cek Sertifikat</a>
              </div>
          </div>
      </div>

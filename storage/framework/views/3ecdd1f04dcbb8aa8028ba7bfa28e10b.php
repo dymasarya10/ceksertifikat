@@ -9,28 +9,32 @@
 </head>
 
 <body>
-        <table>
-            <thead>
+    <table>
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Nama</th>
+                <th>NISN</th>
+                <th>Nama Acara</th>
+                <th>Kode Sertifikat</th>
+                <th>Kode Barcode</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php $__currentLoopData = $collection; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <tr>
-                    <th>No</th>
-                    <th>Nama</th>
-                    <th>NISN</th>
-                    <th>Kode Sertifikat</th>
-                    <th>Kode Barcode</th>
+                    <td><?php echo e($loop->iteration); ?></td>
+                    <td><?php echo e($item->student->name); ?></td>
+                    <td><?php echo e($item->student->id); ?></td>
+                    <td><?php echo e($item->event->name); ?></td>
+                    <td><?php echo e($item->serial_number); ?></td>
+                    <td><?php echo e(base64_encode($item->serial_number) . ':' . rand() . rand() . $item->student->id . rand()); ?>
+
+                    </td>
                 </tr>
-            </thead>
-            <tbody>
-                <?php $__currentLoopData = $collection; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                <tr>
-                        <td><?php echo e($loop->iteration); ?></td>
-                        <td><?php echo e($item->student->name); ?></td>
-                        <td><?php echo e($item->student->id); ?></td>
-                        <td><?php echo e($item->serial_number); ?></td>
-                        <td><?php echo e(Crypt::encrypt($item->serial_number)); ?></td>
-                </tr>
-                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-            </tbody>
-        </table>
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+        </tbody>
+    </table>
 </body>
 
 </html>

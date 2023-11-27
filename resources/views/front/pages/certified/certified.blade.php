@@ -13,7 +13,7 @@
                 @endforeach
             </div>
         @else
-            <p class="display-5 text-center">Piagam Tidak Ditemukan</p>
+            <p class="display-5 text-center">{{ $message }}</p>
         @endif
     </div>
 

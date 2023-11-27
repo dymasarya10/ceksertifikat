@@ -26,26 +26,24 @@ class CharterFrontController extends Controller
 
     public function checkscan(Request $request)
     {
-        try {
-            $decrypted = Crypt::decrypt($request->code);
-            $charter = Charter::where('serial_number', $decrypted);
-            $auth = '';
-            if ($charter->count()) {
-                $auth = 'certified';
-            }
-            return view('front.pages.certified.certified', [
-                'auth' => $auth,
-                'heading' => 'Cari Data Piagam',
-                'charter' => $charter->get('path'),
-            ]);
-        } catch (\Illuminate\Contracts\Encryption\DecryptException $e) {
-            return ('code salah');
+        $splited = explode(':', $request->code);
+        $decrypted = base64_decode($splited[0]);
+        $charter = Charter::where('serial_number', $decrypted);
+        $auth = '';
+        if ($charter->count()) {
+            $auth = 'certified';
         }
+        return view('front.pages.certified.certified', [
+            'auth' => $auth,
+            'heading' => 'Cari Data Piagam',
+            'charter' => $charter->get('path'),
+            'message' => 'Data Piagam Tidak Ditemukan'
+        ]);
     }
 
     public function downloadfile(Request $request)
     {
         // return dd($request);
-        return response()->download(storage_path('app/public/'.$request->path));
+        return response()->download(storage_path('app/public/' . $request->path));
     }
 }
